@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+  header {
+    background-color: #1abc9d;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+  }
+  section {  background-color:#2BBCB5;
+    padding: 1px;
+    text-align: center;
+    color: black;
+  }
+  li {
+   list-style-type: circle;
+   width: 400px;
+   color: green;
+   font size: "6";
+  }
+
+  body {  background-color: #ABE3E0;
+    padding: 10px;
+    font-family: Stencil Std, fantasy ;
+    font size: 14;
+    color: black;}
+
+  h2 {margin:5px;}
+  .card{background-color:white;border-radius:5px;}
+  .card + .card {
+ margin: 0 0 0 8px;
+}
+  
+  a {color:black;
+    padding: 2px;
+  }
+</style>
+</head>
+<body>
+
+<h1 align = center style="color:#0FAA7E;"> {{ g.user.username}}'s Kanban board</h1>
+</h1>
+
+
+  <div class='row'>
+  	Add a new todo item:
+  	<form action = "{{ url_for('add') }}" method="POST">
+  		<input type="text" name = "todoitem">
+      <select name = 'status'>
+        <option value="Todo">Todo</option>
+        <option value="Doing">Doing</option>
+        <option value="Done">Done</option>
+      </select>
+      <input type="submit">
+    </form>
+  </div>
+
+<div class='row'>
+  <div class='column' style="float: left; margin: 3; width: 33%;" style="background-color:powderblue;">
+    <div class = "card bg-warning text-red" style=" width: 27em ;">
+      <div class="card-body">
+        <h3 align="center"> To do </h3>
+          
+          <p class=" card-text" style = "text-align: left;">
+              <ol>
+                {% for todo in todos %}
+                <li style="font-size:15px text-align:left;",> {{ todo.text }} <a href= "{{ url_for('update', id=todo.id)}}" style="font-size:13px"> Doing </a> <a href= "{{ url_for('delete', id=todo.id)}}" style="font-size:13px"> Delete task  </a> </li>
+                {% endfor %}
+              </ol>
+     
+          </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='column' style="float: left; margin: 3; width: 33%;" style="background-color:powderblue;">
+    <div class = "card bg-warning text-yellow" style=" width: 27rem ;">
+
+      <div class="card-body">
+        <h3 align="center"> Doing </h3>
+      
+          <p class="card bg-warning text-white">
+              <ol>
+                {% for todo in doings %}
+                <li style="font-size:15px"> {{ todo.text }} <a href= "{{ url_for('update', id=todo.id)}}" style="font-size:13px"> Done </a> <a href= "{{ url_for('delete', id=todo.id)}}" style="font-size:13px"> Delete task  </a> </li>
+                {% endfor %}
+              </ol>
+          </p>
+      </div>
+    </div>
+  </div>
+
+  <div class='column' style="float: left; margin: 3; width: 33%;" style="background-color:powderblue;">
+    <div class= "card bg-success text-green" style=" width: 27em ;">
+      <div class="card-body">
+        <h3 align="center"> Done </h3>
+          <p class="card-text">
+              <ol>
+                {% for todo in dones %}
+                <li style="font-size:15px"> {{ todo.text }} <a href= "{{ url_for('update', id=todo.id)}}" style="font-size:13px"> Complete </a> <a href= "{{ url_for('delete', id=todo.id)}}" style="font-size:13px"> Delete task  </a>
+                </li>
+                {% endfor %}
+              </ol>
+          </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='row'>
+<form action="/logout">
+<input class="btn btn-lg btn-primary btn-block" type="submit" value="Logout">
+</form>
+</div>
+</body>
+</html>

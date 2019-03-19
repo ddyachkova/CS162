@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Dasha's Kanban board - login page</title>
+<style>
+  body {  background-color: #ABE3E0;
+    padding: 10px;
+    font-family: Stencil Std, fantasy ;
+    font size: 14;
+    color: black;} 
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 align="center">Login, per favor</h1>
+      <br>
+      <form action="" method="post">
+        <input  type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}" align="right">
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}" align="right">
+        <input class="btn btn-default" type="submit" value="Login" align="right">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Python Flask Blogp Ap</title>    
+<style>
+  body {  background-color: #ABE3E0;
+    padding: 10px;
+    font-family: Stencil Std, fantasy ;
+    font size: 14;
+    color: black;} 
+  </style>
+
+  <body>
+      <div class="jumbotron">
+        <h1 align="center">Welcome to Dasha's Kanban</h1>
+        <form action="/signup" method = 'POST'>
+        <label for="inputName" class="sr-only">Name</label>
+        <input type="name" placeholder="Name" name="username" required>
+        <input type="password"  placeholder="Password" name="password" required>
+         
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Signup">
+      </form>
+      </div>
+ 
+      <footer class="footer">
+        <p align="center">Dasha's Kanban</p>
+      </footer>
+ 
+    </div>
+    <form action="/login" method = 'POST'>
+
+    <a href= "{{ url_for('login')}}" style="font-size:13px"> Already registered? </a>
+    </form>
+    <div>
+      
+    </div>
+  </body>
+</html>
+
